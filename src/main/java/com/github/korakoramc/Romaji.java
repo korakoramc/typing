@@ -62,6 +62,8 @@ public class Romaji {
             put("を", "wo");
             put("ん", "nn");
 
+            put("ー", "-");
+
             put("が", "ga");
             put("ぎ", "gi");
             put("ぐ", "gu");

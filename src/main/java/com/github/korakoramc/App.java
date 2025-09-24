@@ -2,35 +2,38 @@ package com.github.korakoramc;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
-    private static Scene scene;
+    private Stage currentStage;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
+    public void start(Stage stage) throws IOException{
+        this.currentStage=stage;
+        stage.setTitle("タイピング");
+        showStartScene();
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public void showStartScene() throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("StartScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),640,480);
+        currentStage.setScene(scene);
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    /*public void showGameScene(){
+        //Scene gameScene=//
+        //currentStage.setScene(gameScene);
     }
 
+    public void showResultScene() {
+        //Scene resultScene = //
+        //currentStage.setScene(resultScene);
+    }*/
     public static void main(String[] args) {
         launch();
     }

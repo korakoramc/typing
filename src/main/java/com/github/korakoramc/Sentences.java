@@ -14,5 +14,9 @@ public class Sentences {
     public String getSubSentence(int n) {
         return sentences[n][1];
     }
+
+    public int getLength(){
+        return sentences.length;
+    }
 }
 
