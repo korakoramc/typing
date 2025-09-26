@@ -12,6 +12,6 @@ public class StartScreenController {
     @FXML
     private void startButtonClick() throws IOException{
         System.out.println("スタート!");
-        //app.showGameScene();
+        app.showGameScene();
     }
 }

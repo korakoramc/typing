@@ -22,14 +22,27 @@ public class App extends Application {
     public void showStartScene() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("StartScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),640,480);
+        StartScreenController controller=fxmlLoader.getController();
+        controller.setApp(this);
         currentStage.setScene(scene);
     }
 
-    /*public void showGameScene(){
-        //Scene gameScene=//
-        //currentStage.setScene(gameScene);
+    public void showGameScene()throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("GameScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 480);
+        GameScreenController controller=fxmlLoader.getController();
+        controller.setApp(this);
+        scene.setOnKeyPressed(event -> {
+            String pressedKey=event.getText();
+            controller.processKeyPress(pressedKey);
+        });
+        currentStage.setScene(scene);
+        TypingManager typingManager=new TypingManager();
+        typingManager.startTyping();
+        controller.setNewProblem(typingManager.getCurrentMainSentence(),typingManager.getCurrentRomajiSentence());
     }
-
+    
+    /* 
     public void showResultScene() {
         //Scene resultScene = //
         //currentStage.setScene(resultScene);

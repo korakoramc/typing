@@ -147,9 +147,12 @@ public class Romaji {
             put("ぴゅ", "pyu");
             put("ぴょ", "pyo");
 
-            put("ヴぁ", "va");
+            //put("ヴぁ", "va");
             put("うぃ", "wi");
             put("いぇ", "ye");
+
+            put("、", ",");
+            put("。", ".");
         }
     };
 
@@ -160,9 +163,21 @@ public class Romaji {
         int i=0;
         while(i<l){
             if(Romaji.containsKey(t[i])){
+                if(i+1<l){
+                    if(t[i+1].equals("ぁ")||
+                    t[i+1].equals("ぃ")||
+                    t[i+1].equals("ぇ")||
+                    t[i+1].equals("ぉ")||
+                    t[i+1].equals("ゃ")||
+                    t[i+1].equals("ゅ")||
+                    t[i+1].equals("ょ")){
+                        result = result + Romaji.get(t[i]+t[i+1]);
+                        i+=2;
+                    }
+                }
                 result=result+Romaji.get(t[i]);
                 i++;
-            }else if(t[i]=="っ"){//"っ"の後は子音のみ
+            }else if(t[i].equals("っ")){//"っ"の後は子音のみ
                 i++;
                 String c=Romaji.get(t[i]).split("")[0];
                 result=result+c+Romaji.get(t[i]);

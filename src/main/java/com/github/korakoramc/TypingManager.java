@@ -3,6 +3,7 @@ package com.github.korakoramc;
 public class TypingManager {
     String currentMainSentence;
     String currentRomajiSentence;
+    
     public void startTyping(){
         int index=(int)(Math.random()*sentences.getLength());
         currentMainSentence=sentences.getMainSentence(index);
