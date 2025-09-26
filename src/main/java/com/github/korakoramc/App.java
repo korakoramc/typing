@@ -32,8 +32,8 @@ public class App extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 640, 480);
         GameScreenController controller=fxmlLoader.getController();
         controller.setApp(this);
-        scene.setOnKeyPressed(event -> {
-            String pressedKey=event.getText();
+        scene.setOnKeyTyped(event -> {
+            String pressedKey=event.getCharacter();
             controller.processKeyPress(pressedKey);
         });
         currentStage.setScene(scene);

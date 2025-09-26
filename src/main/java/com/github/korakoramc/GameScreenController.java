@@ -30,7 +30,7 @@ public class GameScreenController {
     }
 
     public void processKeyPress(String pressedKey){
-        if(currentRomaji==null)
+        if(currentRomaji==null)//問題が表示されるまでは何もしない
         return;
         String nextKey=currentRomaji.substring(countIndex,countIndex+1);
         if(pressedKey.equals(nextKey)){
