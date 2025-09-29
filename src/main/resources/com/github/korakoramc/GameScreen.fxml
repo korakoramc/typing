@@ -12,12 +12,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="japaneseLabel" text="ここに日本語の問題文が表示されます">
+      <Label fx:id="japaneseLabel">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="romajiLabel" text="kokoninihonngonoproblemgahyoujisaremasu">
+      <Label fx:id="romajiLabel">
          <font>
             <Font name="Consolas" size="28.0" />
          </font>

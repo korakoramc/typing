@@ -17,6 +17,7 @@ public class GameScreenController {
     private App app;
     private int countIndex;
     private String currentRomaji;
+    private int finishedProblems=0;
 
     public void setApp(App app){
         this.app=app;
@@ -37,11 +38,24 @@ public class GameScreenController {
             countIndex++;
             romajiLabel.setText(currentRomaji.substring(countIndex));
             if(countIndex==currentRomaji.length()){
-                System.out.println("終了");
-                //app.loadNextProblem;
+                System.out.println("次の問題");
+                loadNextProblem();
             }
         }else{
             System.out.println("ミス！");
         }
+    }
+
+    private void loadNextProblem(){
+        finishedProblems++;
+        if(finishedProblems>=3){
+            app.showResultScene();
+        }
+        TypingManager typingManager=new TypingManager();
+        typingManager.startTyping();
+        japaneseLabel.setText(typingManager.getCurrentMainSentence());
+        romajiLabel.setText(typingManager.getCurrentRomajiSentence());
+        currentRomaji = typingManager.getCurrentRomajiSentence();
+        countIndex = 0;
     }
 }
