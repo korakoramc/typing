@@ -28,11 +28,20 @@ public class App extends Application {
         currentStage.setScene(scene);
     }
 
-    public void showGameScene()throws IOException{
+    public void showSettingScene()throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SettingsScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 640, 480);
+        SettingsScreenController controller = fxmlLoader.getController();
+        controller.setApp(this);
+        currentStage.setScene(scene);
+    }
+
+    public void showGameScene(String mode,int value)throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("GameScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 480);
         GameScreenController controller=fxmlLoader.getController();
         controller.setApp(this);
+        controller.setupGame(mode, value);
         scene.setOnKeyTyped(event -> {
             String pressedKey=event.getCharacter();
             controller.processKeyPress(pressedKey);

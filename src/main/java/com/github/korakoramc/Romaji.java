@@ -70,8 +70,8 @@ public class Romaji {
             put("げ", "ge");
             put("ご", "go");
 
-            put("ざ", "zi");
-            put("じ", "za");
+            put("ざ", "za");
+            put("じ", "zi");
             put("ず", "zu");
             put("ぜ", "ze");
             put("ぞ", "zo");

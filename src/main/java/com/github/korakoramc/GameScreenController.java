@@ -14,13 +14,23 @@ public class GameScreenController {
     @FXML
     private Label timerLabel;
 
+
     private App app;
     private int countIndex;
     private String currentRomaji;
     private int finishedProblems=0;
+    TypingManager typingManager = new TypingManager();
+
+    String mode;
+    int value;
 
     public void setApp(App app){
         this.app=app;
+    }
+
+    public void setupGame(String mode,int value){
+        this.mode=mode;
+        this.value=value;
     }
 
     public void setNewProblem(String japanese,String romaji){
@@ -48,14 +58,11 @@ public class GameScreenController {
 
     private void loadNextProblem(){
         finishedProblems++;
-        if(finishedProblems>=3){
+        if(finishedProblems>=value){
+            System.out.println("終了");
             app.showResultScene();
         }
-        TypingManager typingManager=new TypingManager();
         typingManager.startTyping();
-        japaneseLabel.setText(typingManager.getCurrentMainSentence());
-        romajiLabel.setText(typingManager.getCurrentRomajiSentence());
-        currentRomaji = typingManager.getCurrentRomajiSentence();
-        countIndex = 0;
+        setNewProblem(typingManager.getCurrentMainSentence(), typingManager.getCurrentRomajiSentence());
     }
 }
