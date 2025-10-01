@@ -29,11 +29,10 @@
                   <fx:define>
                      <ToggleGroup fx:id="modeToggleGroup" />
                   </fx:define>
-                  <RadioButton fx:id="timeLimitRadio" mnemonicParsing="false" selected="true" text="時間制限" toggleGroup="$modeToggleGroup" />
-                  <RadioButton fx:id="questRadio" mnemonicParsing="false" text="問題数クリア" toggleGroup="$modeToggleGroup" />
+                  <RadioButton fx:id="questRadio" mnemonicParsing="false" selected="true" text="問題数クリア" toggleGroup="$modeToggleGroup" />
                </children>
             </HBox>
-            <Label text="問題数 / 制限時間">
+            <Label text="問題数">
                <font>
                   <Font size="18.0" />
                </font>

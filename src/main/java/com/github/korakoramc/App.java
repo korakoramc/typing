@@ -52,9 +52,13 @@ public class App extends Application {
         controller.setNewProblem(typingManager.getCurrentMainSentence(),typingManager.getCurrentRomajiSentence());
     }
 
-    public void showResultScene() {
-        //Scene resultScene = //
-        //currentStage.setScene(resultScene);
+    public void showResultScene(int correctTypeCount,int incorrectTypeCount) throws IOException{
+        FXMLLoader fxmlLoader=new FXMLLoader(App.class.getResource("ResultScreen.fxml"));
+        Scene scene=new Scene(fxmlLoader.load(),640,480);
+        ResultScreenController controller=fxmlLoader.getController();
+        controller.setApp(this);
+        controller.setResults(correctTypeCount,incorrectTypeCount);
+        currentStage.setScene(scene);
     }
     public static void main(String[] args) {
         launch();

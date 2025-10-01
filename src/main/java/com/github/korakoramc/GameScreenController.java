@@ -1,5 +1,7 @@
 package com.github.korakoramc;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -17,6 +19,7 @@ public class GameScreenController {
 
     private App app;
     private int countIndex;
+    private int correctTypeCount=0,incorrectTypeCount=0;
     private String currentRomaji;
     private int finishedProblems=0;
     TypingManager typingManager = new TypingManager();
@@ -31,6 +34,8 @@ public class GameScreenController {
     public void setupGame(String mode,int value){
         this.mode=mode;
         this.value=value;
+        correctTypeCount=0;
+        incorrectTypeCount=0;
     }
 
     public void setNewProblem(String japanese,String romaji){
@@ -45,6 +50,7 @@ public class GameScreenController {
         return;
         String nextKey=currentRomaji.substring(countIndex,countIndex+1);
         if(pressedKey.equals(nextKey)){
+            correctTypeCount++;
             countIndex++;
             romajiLabel.setText(currentRomaji.substring(countIndex));
             if(countIndex==currentRomaji.length()){
@@ -53,6 +59,7 @@ public class GameScreenController {
             }
         }else{
             System.out.println("ミス！");
+            incorrectTypeCount++;
         }
     }
 
@@ -60,7 +67,11 @@ public class GameScreenController {
         finishedProblems++;
         if(finishedProblems>=value){
             System.out.println("終了");
-            app.showResultScene();
+            try{
+                app.showResultScene(correctTypeCount,incorrectTypeCount);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
         }
         typingManager.startTyping();
         setNewProblem(typingManager.getCurrentMainSentence(), typingManager.getCurrentRomajiSentence());

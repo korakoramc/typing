@@ -11,8 +11,6 @@ public class SettingsScreenController {
     @FXML
     private ToggleGroup modeToggleGroup;
     @FXML
-    private RadioButton timeLimitRadio;
-    @FXML
     private RadioButton questRadio;
     @FXML
     private ChoiceBox<Integer> valueChoiceBox;
